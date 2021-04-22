@@ -1,0 +1,20 @@
+server {
+	listen 80;
+	listen [::]:80;
+
+	listen 443 ssl;
+	listen [::]:443 ssl;
+
+	ssl_certificate /etc/ssl/certs/ssl-cert-meetups-nyc.pem;
+	ssl_certificate_key /etc/ssl/private/ssl-cert-meetups-nyc.key;
+
+	root /var/www/meetups.nyc/public;
+
+	index index.html
+
+	server_name meetups.nyc;
+
+	location / {
+		try_files $uri $uri/ =404;
+	}
+}
