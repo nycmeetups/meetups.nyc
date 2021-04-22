@@ -17,6 +17,8 @@ After the image is built, run the image
 $ ./scripts/run.sh
 ```
 
+Then simply view the website in your browser at [http://localhost:8080](http://localhost:8080) for HTTP and [https://localhost:8081](https://localhost:8081) for HTTPS (just for development).
+
 ## SSL
 For dev only, to ensure SSL works, make sure to allow self-signed certs for
 localhost in the Chrome settings. Open
