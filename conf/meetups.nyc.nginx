@@ -1,20 +1,26 @@
 server {
-	listen 80;
-	listen [::]:80;
+  listen 80;
+  listen [::]:80;
 
-	# listen 443 ssl;
-	# listen [::]:443 ssl;
+  # listen 443 ssl;
+  # listen [::]:443 ssl;
 
-	# ssl_certificate /etc/ssl/certs/ssl-cert-meetups-nyc.pem;
-	# ssl_certificate_key /etc/ssl/private/ssl-cert-meetups-nyc.key;
+  # ssl_certificate /etc/ssl/certs/ssl-cert-meetups-nyc.pem;
+  # ssl_certificate_key /etc/ssl/private/ssl-cert-meetups-nyc.key;
 
-	root /var/www/meetups.nyc/public;
+  root /var/www/meetups.nyc/public;
 
-	index index.html
+  index index.html
 
-	server_name meetups.nyc;
+  server_name meetups.nyc;
 
-	location / {
-		try_files $uri $uri/ =404;
-	}
+  location / {
+    try_files $uri $uri/ =404;
+  }
+
+  error_page 404 /404.html;
+  location = /404.html {
+    root /var/www/meetups.nyc/public/;
+    internal;
+  }
 }

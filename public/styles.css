@@ -46,14 +46,19 @@ h1, h2, h3, h4 {
   padding-bottom: 0;
 }
 
-.main .join-us {
+h2 {
   color: #ec4b4b;
 }
 
 .header {
-  color: #3d444e;
   background-color: #23282d;
   text-align: center;
+  text-decoration: none;
+  display: block;
+}
+
+.header .content .title {
+  color: #3d444e;
 }
 
 .invite {
