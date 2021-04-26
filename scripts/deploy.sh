@@ -2,10 +2,19 @@
 
 cd "$(dirname "$0")"/..
 
-# chown -R www-data /var/www/meetups.nyc/public
-# chmod -R 500 /var/www/meetups.nyc/public
+if [ -f /.dockerenv ]; then
+  ENV="dev"
+else
+  ENV="prod"
+fi
 
 rm /etc/nginx/sites-enabled/default >/dev/null 2>&1
+
+if [ "$ENV" == "dev" ]; then
+  cp ./conf/meetups-dev.nyc.nginx /etc/nginx/sites-enabled/meetups-insecure.nyc.conf
+else
+  cp ./conf/meetups-insecure.nyc.nginx /etc/nginx/sites-enabled/meetups-insecure.nyc.conf
+fi
 
 cp ./conf/meetups.nyc.nginx /etc/nginx/sites-enabled/meetups.nyc.conf
 
